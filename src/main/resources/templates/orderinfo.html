@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+</head>
+<body>
+    <div align="center">
+        <h1>订单详情</h1>
+        <table th:each="user: ${user}">
+            <tr><td>订单编号</td><td th:text="${booking.id}"></td></tr>
+            <tr><td>预约人</td><td th:text="${booking.userName}"></td></tr>
+            <tr><td>预约场所</td><td th:text="${booking.venueName}"></td></tr>
+            <tr><td>预约起始时间</td><td th:text="${booking.openTime}"></td></tr>
+            <tr><td>预约终止时间</td><td th:text="${booking.openTime+booking.length}"></td></tr>
+            <tr><td>订单状态</td><td th:text="${booking.status}"></td></tr>
+        </table>
+    </div>
+
+</body>
+</html>
