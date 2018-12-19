@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.*;
 
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 /**
  * @param: none
@@ -34,6 +34,9 @@ public class News {
     /*内容*/
     @Column (name = "content")
     private String content;
+
+    @Column (name = "status")
+    private Integer status;
 
     public News(){
     }

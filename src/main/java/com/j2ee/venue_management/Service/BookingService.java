@@ -7,11 +7,11 @@ public interface BookingService {
 
     Booking findOne(Integer id);
 
-    Booking findByVenueIDAndDate(Integer VenueID, Date date);
+    Booking findByVenueidAndDate(Integer Venueid, Date date);
 
-    Booking findByUserIDAndUserName(Integer UserID, String UserName);
+    Booking findByUseridAndUsername(Integer userid, String username);
 
-    Booking findByVenueNameAndVenueID(String VenueName,Integer VenueID);
+    Booking findByVenuenameAndVenueid(String venuename,Integer venueid);
 
     Booking createBooking(Booking booking);
 

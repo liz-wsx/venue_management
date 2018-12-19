@@ -6,6 +6,8 @@ import com.j2ee.venue_management.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @param: none
  * @description: 用于实现Service层
@@ -30,5 +32,12 @@ public class NewsServiceImpl implements NewsService {
     public void deleteNewsById(Integer id){
         NewsRepository.deleteById(id);
     }
+
+    @Override
+    public News findNews(Integer status)
+    {
+        return NewsRepository.findByStatus(status);
+    }
+
 
 }

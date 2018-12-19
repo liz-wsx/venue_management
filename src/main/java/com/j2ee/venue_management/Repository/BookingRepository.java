@@ -14,7 +14,7 @@ import java.util.List;
  **/
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-    Booking findByVenueIDAndDate(Integer VenueID, Date date);
-    Booking findByUserIDAndUserName(Integer userID, String userName);
-    Booking findByVenueNameAndVenueID(String venueName,Integer venueID);
+    Booking findByVenueidAndDate(Integer venueid, Date date);
+    Booking findByUseridAndUsername(Integer userID, String username);
+    Booking findByVenuenameAndVenueid(String venuename,Integer venueid);
 }

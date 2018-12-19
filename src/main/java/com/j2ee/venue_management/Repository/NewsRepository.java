@@ -12,4 +12,6 @@ import java.util.List;
  * @create: 2018-12-9
  **/
 public interface NewsRepository extends JpaRepository<News, Integer> {
+
+    News findByStatus(Integer status);
 }

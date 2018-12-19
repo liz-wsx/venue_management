@@ -24,21 +24,21 @@ public class BookingServiceImpl implements BookingService {
     public Booking findOne(Integer id){return bookingRepository.findById(id).get();};
 
     @Override
-    public Booking findByVenueIDAndDate(Integer VenueID, Date date)
+    public Booking findByVenueidAndDate(Integer venueid, Date date)
     {
-        return bookingRepository.findByVenueIDAndDate(VenueID, date);
+        return bookingRepository.findByVenueidAndDate(venueid, date);
     }
 
     @Override
-    public Booking findByUserIDAndUserName(Integer UserID, String UserName)
+    public Booking findByUseridAndUsername(Integer userid, String username)
     {
-        return bookingRepository.findByUserIDAndUserName(UserID, UserName);
+        return bookingRepository.findByUseridAndUsername(userid, username);
     }
 
     @Override
-    public Booking findByVenueNameAndVenueID(String VenueName,Integer VenueID)
+    public Booking findByVenuenameAndVenueid(String venuename,Integer venueid)
     {
-        return bookingRepository.findByVenueNameAndVenueID(VenueName,VenueID);
+        return bookingRepository.findByVenuenameAndVenueid(venuename,venueid);
     }
 
     @Override

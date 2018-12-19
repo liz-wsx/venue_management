@@ -9,10 +9,10 @@
         <h1>订单详情</h1>
         <table th:each="b: ${bookingList}">
             <tr><td>订单编号</td><td th:text="${b.id}"></td></tr>
-            <tr><td>预约人</td><td th:text="${b.userName}"></td></tr>
-            <tr><td>预约场所</td><td th:text="${b.venueName}"></td></tr>
-            <tr><td>预约起始时间</td><td th:text="${b.openTime}"></td></tr>
-            <tr><td>预约终止时间</td><td th:text="${b.openTime+booking.length}"></td></tr>
+            <tr><td>预约人</td><td th:text="${b.username}"></td></tr>
+            <tr><td>预约场所</td><td th:text="${b.venuename}"></td></tr>
+            <tr><td>预约起始时间</td><td th:text="${b.opentime}">点</td></tr>
+            <tr><td>预约终止时间</td><td th:text="${b.opentime+b.length}">点</td></tr>
             <tr><td>订单状态</td><td th:text="${b.status}"></td></tr>
         </table>
     </div>
