@@ -3,6 +3,7 @@ package com.j2ee.venue_management.Controller;
 import com.j2ee.venue_management.DO.Message;
 import com.j2ee.venue_management.Service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author: YQ
  * @create: 2018-12-9
  **/
-@RestController
+@Controller
 @RequestMapping("/message")
 public class MessageController {
 

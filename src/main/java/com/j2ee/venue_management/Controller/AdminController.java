@@ -3,6 +3,7 @@ package com.j2ee.venue_management.Controller;
 import com.j2ee.venue_management.DO.Admin;
 import com.j2ee.venue_management.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author: KingJ
  * @create: 2018-11-28 00:54
  **/
-@RestController
+@Controller
 @RequestMapping("/admin")
 public class AdminController {
 

@@ -50,7 +50,7 @@ public class UserController {
                          Model model) {
         User user = userService.findByNameAndPassword(name, password);
         model.addAttribute("user", user);
-        return "userinfo";//html
+        return "index";//html
     }
 
     @GetMapping("/createU")
@@ -63,7 +63,7 @@ public class UserController {
         User user = new User(name,password,phoneNumber,email);
         model.addAttribute("user", user);
         userRepository.save(user);
-        return "userinfo";
+        return "index";
     }
 
 }
