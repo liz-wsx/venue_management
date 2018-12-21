@@ -6,6 +6,8 @@ import com.j2ee.venue_management.Service.UserService;
 import com.j2ee.venue_management.Repository.UserRepository;
 import com.j2ee.venue_management.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -71,14 +73,68 @@ public class UserController {
     @GetMapping("/createU")
     public String createU(@RequestParam("name") String name,
                           @RequestParam("password") String password,
-                          @RequestParam("phoneNumber") String phoneNumber,
+                          @RequestParam("phone") String phone,
                           @RequestParam("email") String email,
                           Model model)
     {
-        User user = new User(name,password,phoneNumber,email);
+        User user = new User(name,password,phone,email);
         model.addAttribute("user", user);
         userRepository.save(user);
         return "index";
+    }
+
+    @GetMapping("/userMain")
+    public String userMain(@RequestParam("id") Integer id,Model model)
+    {
+        User user=userService.findOne(id);
+        model.addAttribute("user",user);
+        return "user-ProEdit";
+    }
+
+    @GetMapping("/pwChange")
+    public String pwChange(@RequestParam("id") Integer id,Model model)
+    {
+        User user=userService.findOne(id);
+        model.addAttribute("user",user);
+        return "user-PwChange";
+    }
+
+    @GetMapping("/userOrder")
+    public String userOrder(@RequestParam("id") Integer id,Model model)
+    {
+        User user=userService.findOne(id);
+        model.addAttribute("user",user);
+        return "user-orders";
+    }
+
+    @GetMapping("/editInfo")
+    public String editInfo(@RequestParam("id") Integer id,
+                           @RequestParam("name") String name,
+                           @RequestParam("phone") String phone,
+                           @RequestParam("email") String email,
+                           Model model)
+    {
+        User user=userService.findOne(id);
+        user.setName(name);
+        user.setEmail(email);
+        user.setPhone(phone);
+        User save = userRepository.save(user);
+        model.addAttribute("user",user);
+        return "user-ProEdit";
+    }
+
+    @GetMapping("/changePw")
+    public String changePw(@RequestParam("id") Integer id,
+                           @RequestParam("password") String password,
+                           @RequestParam("newpw") String newpw,
+                           @RequestParam("newpw2") String newpw2,
+                           Model model)
+    {
+        User user=userService.findByIdAndPassword(id,password);
+        user.setPassword(newpw);
+        User save = userRepository.save(user);
+        model.addAttribute("user",user);
+        return "user-PwChange";
     }
 
 }

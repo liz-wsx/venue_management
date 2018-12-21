@@ -2,6 +2,9 @@ package com.j2ee.venue_management.Repository;
 
 import com.j2ee.venue_management.DO.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -16,6 +19,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findByNameAndPassword(String name, String password);
     // JPA中没有默认的修改数据的方法，这里需要重写sql语句进行更新。
     //User changeByNameAndPassword(String name, String password);
-
-
+    User findByIdAndPassword(Integer id, String password);
 }

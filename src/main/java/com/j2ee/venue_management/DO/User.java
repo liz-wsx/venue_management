@@ -29,8 +29,8 @@ public class User {
     private String password;
 
     /* 手机号 */
-    @Column(name = "phoneNumber")
-    private String phoneNumber;
+    @Column(name = "phone")
+    private String phone;
 
     /* 邮箱 */
     @Column(name = "email")
@@ -44,11 +44,32 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String password,String phoneNumber, String email){
+    public User(String name, String password,String phone, String email){
         this.name = name;
         this.password = password;
-        this.phoneNumber=phoneNumber;
+        this.phone=phone;
         this.email=email;
     }
+
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email=email;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone=phone;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password=password;
+    }
+
 
 }

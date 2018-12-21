@@ -8,9 +8,13 @@ public interface UserService {
 
     User findByNameAndPassword(String name, String password);
 
+    User findByIdAndPassword(Integer id, String password);
+
     //User changeByNameAndPassword(String name,String password);
 
     User createUser(User user);
+
+
 
     void deleteUserById(Integer id);
         }
