@@ -6,7 +6,9 @@ import com.j2ee.venue_management.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @param: none
@@ -24,21 +26,15 @@ public class BookingServiceImpl implements BookingService {
     public Booking findOne(Integer id){return bookingRepository.findById(id).get();};
 
     @Override
-    public Booking findByVenueidAndDate(Integer venueid, Date date)
+    public Booking findByVenueidAndDate(Integer venueid, String date)
     {
         return bookingRepository.findByVenueidAndDate(venueid, date);
     }
 
     @Override
-    public Booking findByUseridAndUsername(Integer userid, String username)
+    public List<Booking> findByUserid(Integer userid)
     {
-        return bookingRepository.findByUseridAndUsername(userid, username);
-    }
-
-    @Override
-    public Booking findByVenuenameAndVenueid(String venuename,Integer venueid)
-    {
-        return bookingRepository.findByVenuenameAndVenueid(venuename,venueid);
+        return bookingRepository.findByUserid(userid);
     }
 
     @Override

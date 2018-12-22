@@ -1,8 +1,10 @@
 package com.j2ee.venue_management.Controller;
 
+import com.j2ee.venue_management.DO.Booking;
 import com.j2ee.venue_management.DO.News;
 import com.j2ee.venue_management.DO.User;
 import com.j2ee.venue_management.Service.UserService;
+import com.j2ee.venue_management.Service.BookingService;
 import com.j2ee.venue_management.Repository.UserRepository;
 import com.j2ee.venue_management.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private BookingService bookingService;
 
 
     @GetMapping("/login")
@@ -103,6 +109,8 @@ public class UserController {
     public String userOrder(@RequestParam("id") Integer id,Model model)
     {
         User user=userService.findOne(id);
+        List<Booking> bookingList=bookingService.findByUserid(id);
+        model.addAttribute("bookingList",bookingList);
         model.addAttribute("user",user);
         return "user-orders";
     }

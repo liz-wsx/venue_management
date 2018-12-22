@@ -1,7 +1,11 @@
 package com.j2ee.venue_management.DO;
 
 import lombok.Data;
+
+import java.security.Timestamp;
 import java.util.*;
+import com.j2ee.venue_management.Service.VenueService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 /**
@@ -13,6 +17,8 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "booking")
+
+
 public class Booking {
 
     /* 订单ID */
@@ -25,9 +31,6 @@ public class Booking {
     @Column(name = "userid")
     private Integer userid;
 
-    /*用户名*/
-    @Column(name = "username")
-    private String username;
 
     /* 场馆ID*/
     @Column(name = "venueid")
@@ -39,38 +42,38 @@ public class Booking {
 
     /* 日期*/
     @Column(name = "date")
-    private Date date;
+    private String date;
 
     /* 开始时间*/
-    @Column(name = "opentime")
-    private Integer Opentime;
+    @Column(name = "time")
+    private Integer time;
 
     /*时长*/
-    @Column(name ="length")
-    private Integer length;
+    @Column(name ="venueprice")
+    private Double venueprice;
 
     @Column(name ="status")
-    private Integer status;
+    private String status;
 
     public Booking(){
+        //setVenue();
     }
 
     /*用于查找某一天某一场馆的预约情况*/
-    public Booking(Integer venueid, Date date){
+    public Booking(Integer venueid, String date){
+        //setVenue();
         this.venueid = venueid;
         this.date = date;
     }
 
-    /*用于查找某一用户的全部订单*/
-    public Booking(Integer userid, String username){
-        this.userid = userid;
-        this.username = username;
-    }
+    /*@Autowired
+    private VenueService venueService;
 
-    /*用于查找某一场馆的全部订单*/
-    public Booking(String venuename,Integer venueid){
-        this.venueid = venueid;
-        this.venuename = venuename;
-    }
+    private void setVenue()
+    {
+        Venue venue=venueService.findOne(this.venueid);
+        this.venuename=venue.name;
+        this.venueprice=venue.price;
+    }*/
 
 }

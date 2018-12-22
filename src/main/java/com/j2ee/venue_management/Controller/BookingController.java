@@ -1,7 +1,9 @@
 package com.j2ee.venue_management.Controller;
 
 import com.j2ee.venue_management.DO.Booking;
+import com.j2ee.venue_management.DO.User;
 import com.j2ee.venue_management.Service.BookingService;
+import com.j2ee.venue_management.Service.UserService;
 import com.j2ee.venue_management.Repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class BookingController {
     private BookingService bookingService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private BookingRepository bookingRepository;
 
     @GetMapping("/orderinfo")
@@ -38,23 +43,6 @@ public class BookingController {
         return bookingService.findOne(id);
     }
 
-    @GetMapping("/reservetime/{VenueID}")
-    public Booking signIn(@PathVariable("VenueID") Integer venueid,
-                          @RequestParam("date") Date date) {
-        return bookingService.findByVenueidAndDate(venueid, date);
-    }
-
-    @GetMapping("/userinfo/{UserID}")
-    public Booking signIn(@PathVariable("UserID") Integer userid,
-                          @RequestParam("UserName") String username) {
-        return bookingService.findByUseridAndUsername(userid,username);
-    }
-
-    @GetMapping("/venueinfo/{VenueName}")
-    public Booking signIn(@PathVariable("VenueName") String venuename,
-                          @RequestParam("VenueID") Integer venueid) {
-        return bookingService.findByVenuenameAndVenueid(venuename,venueid);
-    }
 
     @GetMapping("/getOrder")
     public String getOrder(Model model)
@@ -62,6 +50,19 @@ public class BookingController {
         List<Booking> bookingList=bookingRepository.findAll();
         model.addAttribute("bookingList", bookingList);
         return "orderinfo";
+    }
+
+    @GetMapping("/cancel")
+    public String cancelOrder(@RequestParam("id") Integer id,
+                              @RequestParam("userid") Integer userid,
+                              Model model)
+    {
+        bookingService.deleteBookingById(id);
+        User user=userService.findOne(userid);
+        List<Booking> bookingList=bookingService.findByUserid(userid);
+        model.addAttribute("bookingList",bookingList);
+        model.addAttribute("user",user);
+        return "user-orders";
     }
 
 

@@ -30,11 +30,11 @@ public class Venue {
 
     /* 名字 */
     @Column(name = "name")
-    private String name;
+    public String name;
 
     /* 邮箱 */
     @Column(name = "price")
-    private Double price;
+    public Double price;
 
     public Venue(){
     }

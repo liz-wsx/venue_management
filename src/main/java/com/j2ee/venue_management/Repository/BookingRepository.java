@@ -2,6 +2,8 @@ package com.j2ee.venue_management.Repository;
 
 import com.j2ee.venue_management.DO.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.sql.Timestamp;
 import java.util.*;
 
 import java.util.List;
@@ -14,7 +16,6 @@ import java.util.List;
  **/
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-    Booking findByVenueidAndDate(Integer venueid, Date date);
-    Booking findByUseridAndUsername(Integer userID, String username);
-    Booking findByVenuenameAndVenueid(String venuename,Integer venueid);
+    Booking findByVenueidAndDate(Integer venueid, String date);
+    List<Booking> findByUserid(Integer userid);
 }

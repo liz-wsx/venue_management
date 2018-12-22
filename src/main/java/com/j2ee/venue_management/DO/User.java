@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    public Integer id;
 
     /* 用户名 */
     @Column(name = "name")

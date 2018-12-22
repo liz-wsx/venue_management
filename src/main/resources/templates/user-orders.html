@@ -94,7 +94,7 @@
                     </a>
                     <div class="clearfix"></div>
 
-                    <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+                    <div>
                         <ul class="nav">
                             <li>
                                 <a href="/user/userMain" th:each="u: ${user}" th:href="@{/user/userMain(id=${u.id})}">
@@ -153,38 +153,28 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
                                         <th scope="col">Order ID</th>
                                         <th scope="col">Venue</th>
+                                        <th scope="col">Date</th>
                                         <th scope="col">Time</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Success or not</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td >数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
-                                        <td>数据库</td>
+                                    <tr th:each="b: ${bookingList}">
+                                        <td th:text="${b.id}"></td>
+                                        <td th:text="${b.venuename}"></td>
+                                        <td th:text="${b.date}"></td>
+                                        <td th:text="${b.time}"></td>
+                                        <td th:text="${b.venueprice}"></td>
+                                        <td th:text="${b.status}"></td>
+                                        <td>
+                                            <form action="/booking/cancel(id=${b.id},userid=${b.userid})">
+                                                <a th:href="@{/booking/cancel(id=${b.id},userid=${b.userid})}"><i class="fa fa-minus-square" style="color: red"></i> 确认删除
+                                                </a>
+                                            </form>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
